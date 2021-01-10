@@ -31,14 +31,12 @@ class FlutterMapState extends MapGestureMixin {
 
   @override
   void didUpdateWidget(FlutterMap oldWidget) {
-    print('didUpdateWidget');
     mapState.options = options;
     super.didUpdateWidget(oldWidget);
   }
 
   @override
   void initState() {
-    print('initState');
     super.initState();
     mapState = MapState(options);
     rotation = options.rotation;
@@ -118,9 +116,10 @@ class FlutterMapState extends MapGestureMixin {
         mapRoot = PositionedTapDetector(
           key: _positionedTapDetectorKey,
           controller: _positionedTapController,
-          onTap: (){
-            print('PositionedTapDetector on Tap');
 
+          onTap: (v){
+            print('PositionedTapDetector on Tap');
+            handleTap(v);
           },
           onLongPress: handleLongPress,
           onDoubleTap: handleDoubleTap,
@@ -128,10 +127,10 @@ class FlutterMapState extends MapGestureMixin {
             onScaleStart: handleScaleStart,
             onScaleUpdate: handleScaleUpdate,
             onScaleEnd: handleScaleEnd,
-              onTap: (){
-                print('GestureDetector on Tap');
-
-              },
+            onTap: (v){
+              print('GestureDetector on Tap');
+              _positionedTapController.onTap(v);
+            },
             onLongPress: _positionedTapController.onLongPress,
             onTapDown: _positionedTapController.onTapDown,
             onTapUp: handleOnTapUp,
