@@ -81,6 +81,7 @@ abstract class MapGestureMixin extends State<FlutterMap>
   }
 
   void handleScaleEnd(ScaleEndDetails details) {
+    print("ScaleEndDetails ${details}");
     _resetDoubleTapHold();
 
     if (!options.allowPanning) {
