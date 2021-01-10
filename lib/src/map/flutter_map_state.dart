@@ -132,7 +132,7 @@ class FlutterMapState extends MapGestureMixin {
             onTapUp: handleOnTapUp,
             onPanEnd: (v){
 print("onPanEnd ${v}");
-            }
+            },
             child: layerStack,
 
           ),
